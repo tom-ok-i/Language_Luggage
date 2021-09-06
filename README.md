@@ -1,24 +1,62 @@
-# README
+# Language Luggage
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+・語学を学ぶ人を助ける、語学学習に適したエンターテイメントメディアの情報共有サイトです。語学学習に役に立つコンテンツを投稿し、他の学習者と共有することができます。メディアのジャンルは主に、小説・音楽・映画・ドラマ・コミック・ゲーム等です。
 
-* Ruby version
+・語学レベル別、作品ジャンル別にメディアの検索が可能であり、語学学習を通じて好みの作品に出会える機会を生み出します。
 
-* System dependencies
+・実際に作品に触れてみて、学習に役に立ったかどうかのレビューを行うことが出来るため、作品を選ぶ際に他者の意見を参考にすることができます。
 
-* Configuration
+・各ユーザーは自らの語学力を登録することが出来るため、投稿しているユーザーやレビュワーの語学力を参考にしながら、コンテンツを選ぶことが出来ます。
 
-* Database creation
+・教材で型にはまった言語を学ぶのではなく、世の中にある作品を通して生きた言語を学ぶ機会を、語学学習を行う全ての人々が享受することが出来るようになります。
 
-* Database initialization
+### サイトテーマ
 
-* How to run the test suite
+・言語を学ぶ人々が、楽しく言語を学ぶためのエンターテイメントメディアを共有し、評価することで、より優れたコンテンツに出会える機会を与えるサイト
 
-* Services (job queues, cache servers, search engines, etc.)
+### テーマを選んだ理由
 
-* Deployment instructions
+・人々の意思疎通に欠かせないモノが言葉、すなわち言語です。多様化する社会の中で、複数の言語を扱えることは強みになり、多くの情報に触れる機会を与えてくれます。
 
-* ...
+・日本では、英語力に対する需要が年々増加傾向にある一方、まだまだ教育の体制は万全とは言えず、英語を使いたいが使えない、という状況下にある人は多数います。英語教材は世の中に溢れていますが、実際英語に触れる機会自体は教本や授業でなくとも、映画や漫画本、ゲームといった楽しめるサブカルチャーに位置するコンテンツを利用して生み出すことも可能です。
+
+・そういった楽しめるコンテンツの量は教材・教本よりも多く無制限にあり、インターネットで探そうにも、そもそも言語が分からないと情報収集の難易度が高いことが多いです。実際には、素晴らしい内容の作品であり、言語学習にも大変役立つにも関わらず、国内ではあまり広告費用が掛けられず、認知度が低い作品も多々あります。海外の作品をノンネイティブの間でも共有することのできる場がネット上にあれば、優れた作品達がより多くの人々に楽しまれる機会を生み、同時に学習者達も楽しく、生きた言語を学ぶことが出来るようになると思い、本テーマを採用致しました。
+
+### ターゲットユーザ
+
+・教本以外のコンテンツで英語力の向上を図るノンネイティブのユーザー
+
+### 主な利用シーン
+
+・語学学習
+・海外留学
+・海外赴任
+・国際結婚
+
+## 設計書
+
+ER 図
+
+https://drive.google.com/file/d/1yzwq_0O9RGFtiP8Qbjk3Rzh6euqOzCzC/view?usp=sharing
+
+テーブル定義書
+
+https://docs.google.com/spreadsheets/d/1bK7fgYTNRg2YZLZjRNU1Bhz6C6T_yhYW/edit?usp=sharing&ouid=112233872916162869738&rtpof=true&sd=true
+
+アプリケーション詳細設計
+
+https://docs.google.com/spreadsheets/d/1dfok2ZeGhBADCjnAmYPgvhorQCU9NF0pZjcq6cVwuB8/edit?usp=sharing
+
+## チャレンジ要素一覧
+
+https://docs.google.com/spreadsheets/d/11hf5p2wNQMz7tahKN0qIg9dKjSjqVFl_c2qPs_65Fc8/edit?usp=sharing
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
