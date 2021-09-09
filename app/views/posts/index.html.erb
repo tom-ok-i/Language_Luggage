@@ -1,0 +1,18 @@
+<h1>All Contents</h1>
+<h2>Genres</h2>
+<p>Movie</p>
+<p>Books</p>
+<p>Games</p>
+<p>Drama</p>
+<p>Music</p>
+
+<% @posts.each do |post| %>
+<div>
+ <p>作品名：<%= post.title %></p>
+ <%= link_to post_path(post.id) do %>
+ 　<%= image_tag post.image %>
+ <% end %>
+ <p>投稿者：<%= post.user.name %></p>
+ <!--<p>いいね：◯ コメント：◯</p>機能実装後カウント入れる-->
+</div>
+<% end %>

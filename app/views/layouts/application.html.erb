@@ -12,16 +12,16 @@
   <body>
     <% if user_signed_in? %>
     　<li>
-    　 <%= link_to "My Page", user_path(current_user.id) %>
+    　　<%= link_to "My Page", user_path(current_user.id) %>
     　</li>
     　<li>
-    　  <%= link_to "Users", users_path %>
+    　　<%= link_to "Users", users_path %>
     　</li>
     　<li>
-    　 Contents
+    　　<%= link_to "Contents", posts_path %>
     　</li>
     　<li>
-    　 <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    　　<%= link_to "Logout", destroy_user_session_path, method: :delete %>
     　</li>
     <% else %>
       <li>
