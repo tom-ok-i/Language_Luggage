@@ -1,1 +1,12 @@
-<h1>投稿詳細ページ</h1>
+<div>
+  <p>作品名:<%= @post.title %></p>
+  <p>Genre:<%= @post.genre.genre_name %></p>
+  <%= image_tag @post.image %>
+  <p>作品説明：<%= @post.description %></p>
+</div>
+
+<p>いいね</p><p>コメント</p>
+
+<% if @post.user == current_user %>
+ <%= link_to "Edit", edit_post_path(@post) %>
+<% end %>
