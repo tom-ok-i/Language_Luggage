@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ [
+   '小説',
+   '音楽',
+   '映画',
+   'ドラマ',
+   'コミック',
+   'ゲーム'
+  ].each do |name|
+    Genre.create!(
+    { genre_name: name}
+    )
+  end
