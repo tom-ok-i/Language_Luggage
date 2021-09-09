@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <% if user_signed_in %>
+    　<li>
+      　<%= link_to "Home", homes_top_path %>
+    　</li>
+    　<li>
+    　  <%= link_to "Logout", destroy_user_session_path, method::delete %>
+    　</li>
+    <% else %>
+      <li>
+        <%= link_to "Home", homes_top_path %>
+      </li>
+      <li>
+        <%#= link_to "About", homes_about_path #作成途中
+      </li>
+
     <%= yield %>
   </body>
 </html>
