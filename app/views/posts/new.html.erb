@@ -1,0 +1,12 @@
+<h1>作品投稿フォーム</h1>
+<%= form_with model: @post, local:true do |f| %>
+ <h4>Title</h4>
+ <%= f.text_field :title %>
+ <h4>Description</h4>
+ <%= f.text_area :description %>
+ <h4>Genre</h4>
+ <%# %> ドロップダウンで選択できるようにする
+ <h4>Thumbnail</h4>
+ <%= f.file_field :image %>
+ <%= f.submit 'Post' %>
+<% end %>
