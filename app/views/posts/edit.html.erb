@@ -1,7 +1,7 @@
 <h1>Contents Edit</h1>
 <%= form_with model: @post, local:true do |f| %>
   <h4>Title</h4>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, autofocus: true %>
   <h4>Description</h4>
     <%= f.text_area :description %>
   <h4>Genres</h4>

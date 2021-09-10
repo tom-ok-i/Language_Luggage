@@ -3,6 +3,9 @@
   <p>Genre:<%= @post.genre.genre_name %></p>
   <%= image_tag @post.image %>
   <p>作品説明：<%= @post.description %></p>
+  <% if @post.user == current_user %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+  <% end %>
   <% if @post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorites_path(@post),method: :delete do %>
@@ -21,9 +24,10 @@
 <div>
   <p>コメント件数:<%= @post.comments.count %></p>
     <% @post.comments.each do |comment| %>
-      <p><%= image_tag 'sample-author3.jpeg' %></p>
-      <%= comment.user.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      <p><%= image_tag @post.user.image %></p>
+      <p>Commented by <%= link_to comment.user.name, user_path(@post.user) %></p>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+      <%= comment.comment %>
       <% if comment.user == current_user %>
         <div>
           <%= link_to "Delete",post_comment_path(comment.post,comment), method: :delete %>
@@ -37,7 +41,3 @@
     <%= f.submit "Comment" %>
   <% end %>
 </div>
-
-<% if @post.user == current_user %>
- <%= link_to "Edit", edit_post_path(@post) %>
-<% end %>
