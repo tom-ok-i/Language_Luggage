@@ -1,12 +1,36 @@
 <div>
   <h3><%= @user.name %></h3>
-  <%= image_tag 'sample-author3.jpg' %>
+  <%= image_tag @user.image %>
+  <p>自己紹介:<%= @user.introduction %></p>
+</div>
+<div>
+  <% if @user.id == current_user.id %>
+    <%= link_to "Create New Post", new_post_path %><br>
+    <%= link_to "Edit Profile", edit_user_path(@user.id) %>
+  <% end %>
 </div>
 
-<% @post.each do |post| %>
+<% @posts.each do |post| %>
   <div>
-    <%= link_to post_paath(post.id) do %>
+    <p><%= post.title %></p>
+    <%= link_to post_path(post.id) do %>
       <%= image_tag post.image %>
-    <%= end %>
-    <p>投稿ユー</p>
+    <% end %>
+    <p>Posted by <%= post.user.name %></p>
+    <% if post.favorited_by?(current_user) %>
+      <p>
+        <%= link_to post_favorites_path(post),method: :delete do %>
+          ♥<%= post.favorites.count %>いいね
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to post_favorites_path(post),method: :post do %>
+          ♡<%= post.favorites.count %>いいね
+        <% end %>
+      </p>
+    <% end %>
+    <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
   </div>
+<% end %>
+<%= paginate @posts %>
