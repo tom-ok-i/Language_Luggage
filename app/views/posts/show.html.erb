@@ -5,7 +5,25 @@
   <p>作品説明：<%= @post.description %></p>
 </div>
 
-<p>いいね</p><p>コメント</p>
+<div>
+  <p>コメント件数:<%= @post.comments.count %></p>
+    <% @post.comments.each do |comment| %>
+      <p><%= image_tag 'sample-author3.jpeg' %></p>
+      <%= comment.user.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      <% if comment.user == current_user %>
+        <div>
+          <%= link_to "Delete",post_comment_path(comment.post,comment), method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<div>
+  <%= form_with(model:[@post,@comment],loacal: true) do |f| %>
+    <%= f.text_area :comment, rows:'5', palceholder: "コメントをここに" %>
+    <%= f.submit "Comment" %>
+  <% end %>
+</div>
 
 <% if @post.user == current_user %>
  <%= link_to "Edit", edit_post_path(@post) %>
