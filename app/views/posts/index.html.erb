@@ -13,6 +13,6 @@
  　<%= image_tag post.image %>
  <% end %>
  <p>投稿者：<%= post.user.name %></p>
- <!--<p>いいね：◯ コメント：◯</p>機能実装後カウント入れる-->
+ <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
 </div>
 <% end %>
