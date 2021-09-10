@@ -3,6 +3,9 @@
   <p>Genre:<%= @post.genre.genre_name %></p>
   <%= image_tag @post.image %>
   <p>作品説明：<%= @post.description %></p>
+  <% if @post.user == current_user %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+  <% end %>
   <% if @post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorites_path(@post),method: :delete do %>
@@ -38,7 +41,3 @@
     <%= f.submit "Comment" %>
   <% end %>
 </div>
-
-<% if @post.user == current_user %>
- <%= link_to "Edit", edit_post_path(@post) %>
-<% end %>
