@@ -1,6 +1,6 @@
 <div class= "container">
   <div class= "row">
-    <div class= "col-lg-4 pt-4">
+    <div class= "col-12 pt-4 border-bottom">
       <%= image_tag @user.image, size:"400x400", alt: "Profile Image", class: "mx-auto rounded-circle" %>
       <h2 class= "font-weight-bold"><%= @user.name %></h2>
         <% if @user.id == current_user.id %>
@@ -10,7 +10,7 @@
         <p><%= @user.introduction %></p>
         <p class= "pt-3">投稿件数 <%= @posts.count %>件</p>
         <% if @user.id == current_user.id %>
-        <%= link_to "Create New Post", new_post_path, class: "btn btn-success" %><br>
+        <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-5" %><br>
         <% end %>
     </div>
   </div>
