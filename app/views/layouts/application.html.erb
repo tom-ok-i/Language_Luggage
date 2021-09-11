@@ -4,40 +4,77 @@
     <title>LanguageLuggage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name= "viewport" content= "width=device-width, initial-scale=1, maximum-scale=1" >
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if user_signed_in? %>
-    　<li>
-    　　<%= link_to "My Page", user_path(current_user.id) %>
-    　</li>
-    　<li>
-    　　<%= link_to "Users", users_path %>
-    　</li>
-    　<li>
-    　　<%= link_to "Contents", posts_path %>
-    　</li>
-    　<li>
-    　　<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    　</li>
-    <% else %>
-      <li>
-        <%= link_to "Home", homes_top_path %>
-      </li>
-      <li>
-        <%= link_to "About", homes_about_path %>
-      </li>
-      <li>
-        <%= link_to "Sing Up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Login", new_user_session_path %>
-      </li>
-    <% end %>
+  <body class= "d-flex flex-column vh-100">
+    <header class= "shadow-sm">
+      <nav class= "navbar navbar-expand-lg navbar-light">
+        <div class= "container">
+            <img src="/assets/logo.jpeg" class= "img-fluid" width= "50" alt="LOGO">
+          <h2 class= "text-black font-weight-bold">Language Luggage</h2>
+          <button class= "navbar-toggler" type= "button" data-toggle= "collapse" data-target= "#navbarNavDropdown" aria-controls= "navbarNavDropdown" aria-expanded= "false" aria-label= "Toggle navigation">
+            <span class= "navbar-toggler-icon"></span>
+          </button>
+          <div class= "collapse navbar-collapse" id= "navbarNavDropdown">
+            <ul class= "navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class= "nav-item">
+                  <%= link_to "My Page", user_path(current_user.id), class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= link_to "Users", users_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= link_to "Contents", posts_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+                </li>
+              <% else %>
+                <li class= "nav-item">
+                  <%= link_to "Home", homes_top_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= link_to "About", homes_about_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= link_to "Sing Up", new_user_registration_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= link_to "Login", new_user_session_path, class: 'nav-link text-dark' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    <%= yield %>
+    <main class= "mb-auto">
+      <%= yield %>
+    </main>
+    <footer class= "bg-dark text-white">
+      <div class= "container">
+        <div class= "row">
+          <div class= "col-md-4">
+            <p>Let's share your favorite stories.</p>
+          </div>
+          <div class= "col-md-4">
+            <h6 class= "text-white mt-2 mb-3">Language Luggage</h6>
+          </div>
+          <div class= "col-md-4">
+            <ul class= "p-0 list-unstyled">
+              <li>
+                <p class = "text-white-50">Produced by<br>Tomo.T</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
