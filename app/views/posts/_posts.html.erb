@@ -1,0 +1,34 @@
+<% posts.each do |post| %>
+<div class= "card w-50 mx-auto mt-4 mb-4 shadow-lg">
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.image, size: "100x300", alt: "Contents Image", class: "card-img-top" %>
+  <% end %>
+  <div class= "card-body">
+    <div class= "row">
+      <div class= "col-2">
+        <%= image_tag post.user.image, size: "60x60", class: "mt-2 rounded-circle" %>
+      </div>
+      <div class= "col-10">
+        <p class= "font-weight-bold"><%= post.title %></p>
+        <p>Posted by <%= post.user.name %></p>
+        <% if post.favorited_by?(current_user) %>
+        <p>
+          <%= link_to post_favorites_path(post),method: :delete do %>
+            ♥<%= post.favorites.count %>いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to post_favorites_path(post),method: :post do %>
+            ♡<%= post.favorites.count %>いいね
+          <% end %>
+         </p>
+        <% end %>
+        <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
+      </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+<%= paginate posts %>
