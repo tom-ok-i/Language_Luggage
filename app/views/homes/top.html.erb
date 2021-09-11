@@ -4,12 +4,12 @@
       <img src= "/assets/homepage.jpeg" class= "img-fluid shadow" alt= "Picuture">
     </div>
     <div class="col-lg-5">
-      <h1>Learn Language<br>
+      <h1 class= "font-weight-bold">Learn Language<br>
       Through Sharing<br>
       Your Favorite<br>
       Contents</h1>
       <% if user_signed_in? %>
-       <h3>Hello! <%= current_user.name %>さん</h3>
+       <h3 class= "pt-4">Hello! <%= current_user.name %>さん</h3>
       <% else %>
         <%= link_to new_user_registration_path do %>
           <button type="button" class="btn btn-primary mt-3">Join Now!</button>
