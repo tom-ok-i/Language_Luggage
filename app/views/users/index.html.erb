@@ -1,11 +1,26 @@
-<h1>All Users</h1>
-
-<% @users.each do |user| %>
-<div>
-  <%= link_to user_path(user.id) do %>
-   <%= image_tag user.image %>
-   <p><%= user.name%></p>
-  <% end %>
-
+<div class= "container">
+  <div class= "row">
+    <div class= "col-12">
+      <h2 class= "pt-4 text-secondary text-center font-weight-bold">All Users</h2>
+    </div>
+    <div class= "col-12 d-flex flex-wrap">
+      <% @users.each do |user| %>
+      <div class= "card mx-auto mt-4 mb-4 shadow">
+        <%= link_to user_path(user.id) do %>
+          <% if user.image.attached? %>
+            <%= image_tag user.image, size: "400x400", alt: "Profile Image", class: "card-img-top rounded-circle" %>
+          <% else %>
+            <img src= "/assets/no_image_profile.jpg" class="mx-auto rounded-circle" width= "400" height= "400" >
+          <% end %>
+          <h4 class= "font-weight-bold text-center"><%= user.name%></h4>
+        <% end %>
+        <div class= "d-flex justify-content-around">
+          <p class= "pt-3 font-weight-bold">投稿件数 <%= user.posts.count %>件</p>
+          <p>フォロワー数</p>
+          <p>フォロー数</p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
