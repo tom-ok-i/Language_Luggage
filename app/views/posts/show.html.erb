@@ -13,7 +13,11 @@
         <%= @post.genre.genre_name %>
       </div>
       <div class= "mt-4">
-        <%= image_tag @post.image, size: "500x400" %>
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image, size: "500x400" %>
+        <% else %>
+          <img src= "/assets/noimage.png" width="500" height="400" >
+        <% end %>
       </div>
       <div class= "mt-4">
         <h6 class= "font-weight-bold">作品説明</h6>
@@ -41,38 +45,12 @@
         <h6 class= "font-weight-bold text-center">コメント件数</h6>
         <p class= "text-center"><%= @post.comments.count %>件</p>
       </div>
-
-
     </div>
   </div>
 </div>
 
 
 <div>
-  <p>作品名:<%= @post.title %></p>
-  <p>Genre:<%= @post.genre.genre_name %></p>
-  <%= image_tag @post.image %>
-  <p>作品説明：<%= @post.description %></p>
-  <% if @post.user == current_user %>
-    <%= link_to "Edit", edit_post_path(@post) %>
-  <% end %>
-  <% if @post.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_favorites_path(@post),method: :delete do %>
-        ♥<%= @post.favorites.count %>いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post),method: :post do %>
-        ♡<%= @post.favorites.count %>いいね
-      <% end %>
-    </p>
-  <% end %>
-</div>
-
-<div>
-  <p>コメント件数:<%= @post.comments.count %></p>
     <% @post.comments.each do |comment| %>
       <p><%= image_tag @post.user.image %></p>
       <p>Commented by <%= link_to comment.user.name, user_path(@post.user) %></p>
@@ -90,4 +68,4 @@
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "Comment" %>
   <% end %>
-</div>
+  </div>

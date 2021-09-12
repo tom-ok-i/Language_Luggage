@@ -1,9 +1,9 @@
 <div class= "container">
   <div class= "row">
-    <div class= "col-12">
+    <div class= "col-12 border-bottom">
       <h2 class= "pt-4 text-secondary text-center font-weight-bold">All Contents</h2>
       <h4 class= "text-center">Genres</h4>
-      <div class= "row d-flex justify-content-around border-bottom">
+      <div class= "row d-flex justify-content-around">
         <p>Movie</p>
         <p>Books</p>
         <p>Games</p>
@@ -11,6 +11,6 @@
         <p>Music</p>
       </div>
     </div>
+    <%= render 'posts/posts', posts: @posts %>
   </div>
-  <%= render 'posts/posts', posts: @posts %>
 </div>
