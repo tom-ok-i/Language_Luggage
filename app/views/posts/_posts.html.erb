@@ -1,5 +1,6 @@
+<div class= "col-lg-12 d-flex">
 <% posts.each do |post| %>
-<div class= "card w-50 mx-auto mt-4 mb-4 shadow-lg">
+<div class= "card w-50 mx-5 mt-4 mb-4 shadow-lg">
   <%= link_to post_path(post.id) do %>
     <%= image_tag post.image, size: "100x300", alt: "Contents Image", class: "card-img-top" %>
   <% end %>
@@ -32,5 +33,4 @@
   </div>
 </div>
 <% end %>
-
-<%= paginate posts %>
+</div>

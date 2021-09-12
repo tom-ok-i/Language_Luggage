@@ -10,20 +10,17 @@
         <% if @user.id == current_user.id %>
         <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
         <% else %>
-        <div class= "btn">
-          <p>フォローする</p>
-        </div>
+        <div class= "btn btn-success">フォローする</div>
         <% end %>
         <p>フォロワー数</p>
         <p>フォロー数</p>
         <h6 class= "font-weight-bold pt-4">自己紹介</h6>
         <p><%= @user.introduction %></p>
-        <p class= "pt-3 font-weight-bold">投稿件数 <%= @posts.count %>件</p>
+        <p class= "pt-3 font-weight-bold">投稿件数 <%= @user.posts.count %>件</p>
         <% if @user.id == current_user.id %>
         <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-5" %><br>
         <% end %>
     </div>
+    <%= render 'posts/posts', posts: @user.posts %>
   </div>
 </div>
-
-<%= render 'posts/posts', posts: @posts %>
