@@ -1,3 +1,53 @@
+<div class= "container">
+  <div class= "row">
+    <h2 class= "p-4 text-secondary font-weight-bold">作品詳細情報</h2>
+  </div>
+  <div class= "row">
+    <div class= "col-7">
+      <div class= "">
+        <h6 class= "font-weight-bold">作品名</h6>
+        <%= @post.title %>
+      </div>
+      <div class= "mt-4">
+        <h6 class= "font-weight-bold">ジャンル</h6>
+        <%= @post.genre.genre_name %>
+      </div>
+      <div class= "mt-4">
+        <%= image_tag @post.image, size: "500x400" %>
+      </div>
+      <div class= "mt-4">
+        <h6 class= "font-weight-bold">作品説明</h6>
+        <%= @post.description %>
+      </div>
+      <div class= "mt-4">
+        <% if @post.user == current_user %>
+          <%= link_to "Edit", edit_post_path(@post), class: "btn btn-success" %>
+        <% end %>
+      </div>
+      <div class= "mt-4">
+        <% if @post.favorited_by?(current_user) %>
+          <%= link_to post_favorites_path(@post),method: :delete do %>
+            ♥<%= @post.favorites.count %>いいね
+          <% end %>
+        <% else %>
+          <%= link_to post_favorites_path(@post),method: :post do %>
+            ♡<%= @post.favorites.count %>いいね
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class= "col-5 border">
+      <div class= "pt-3">
+        <h6 class= "font-weight-bold text-center">コメント件数</h6>
+        <p class= "text-center"><%= @post.comments.count %>件</p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
 <div>
   <p>作品名:<%= @post.title %></p>
   <p>Genre:<%= @post.genre.genre_name %></p>
@@ -37,7 +87,7 @@
 </div>
 <div>
   <%= form_with(model:[@post,@comment],loacal: true) do |f| %>
-    <%= f.text_area :comment, rows:'5', palceholder: "コメントをここに" %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "Comment" %>
   <% end %>
 </div>
