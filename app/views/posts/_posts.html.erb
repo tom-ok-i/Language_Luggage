@@ -11,20 +11,22 @@
       <div class= "col-10">
         <p class= "font-weight-bold"><%= post.title %></p>
         <p>Posted by <%= post.user.name %></p>
-        <% if post.favorited_by?(current_user) %>
-        <p>
-          <%= link_to post_favorites_path(post),method: :delete do %>
-            ♥<%= post.favorites.count %>いいね
+        <div class= "d-flex justify-content-around">
+          <% if post.favorited_by?(current_user) %>
+          <p>
+            <%= link_to post_favorites_path(post),method: :delete do %>
+              ♥<%= post.favorites.count %>いいね
+            <% end %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to post_favorites_path(post),method: :post do %>
+              ♡<%= post.favorites.count %>いいね
+            <% end %>
+           </p>
           <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to post_favorites_path(post),method: :post do %>
-            ♡<%= post.favorites.count %>いいね
-          <% end %>
-         </p>
-        <% end %>
-        <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
+          <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
+        </div>
       </div>
 <% end %>
     </div>
