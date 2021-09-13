@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-
   belongs_to :user
   belongs_to :genre
   has_many :comments, dependent: :destroy
@@ -10,5 +9,4 @@ class Post < ApplicationRecord
   end
 
   has_one_attached :image
-
 end
