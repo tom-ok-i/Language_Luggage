@@ -1,11 +1,13 @@
 <div class= "container">
-  <div class= "row">
-    <div class= "col-12 pt-4 border-bottom">
+  <div class= "row border-bottom">
+     <div class= "col-4 mt-4">
       <% if @user.image.attached? %>
-      <%= image_tag @user.image, size:"400x400", alt: "Profile Image", class: "mx-auto rounded-circle" %>
+      <%= image_tag @user.image, size:"300x300", alt: "Profile Image", class: "mx-auto rounded-circle" %>
       <% else %>
       <img src= "/assets/no_image_profile.jpg" width="400" height="400" class="mx-auto rounded-circle" >
       <% end %>
+      </div>
+      <div class= "col-8 mt-4">
       <h2 class= "font-weight-bold"><%= @user.name %></h2>
         <% if @user.id == current_user.id %>
         <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
@@ -20,7 +22,9 @@
         <% if @user.id == current_user.id %>
         <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-5" %><br>
         <% end %>
+     </div>
     </div>
-    <%= render 'posts/posts', posts: @user.posts %>
-  </div>
+    <div class= row>
+      <%= render 'posts/posts', posts: @user.posts %>
+    </div>
 </div>
