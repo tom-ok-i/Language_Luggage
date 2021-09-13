@@ -1,0 +1,38 @@
+    <div class= "col-12 d-flex flex-wrap">
+      <% posts.each do |post| %>
+      <div class= "card mx-auto mt-4 mb-4 shadow">
+        <%= link_to post_path(post.id) do %>
+          <% if post.image.attached? %>
+            <%= image_tag post.image, size: "100x300", alt: "Contents Image", class: "card-img-top" %>
+          <% else %>
+            <img src= "/assets/noimage.png" width= "100" height= "300" class= "card-img-top">
+          <% end %>
+        <% end %>
+        <div class= "card-body">
+          <% if post.user.image.attached? %>
+            <%= image_tag post.user.image, size: "60x60", class: "mt-2 rounded-circle" %>
+          <% else %>
+            <img src= "/assets/no_image_profile.jpg" width="60" height="60" class="mt-2 rounded-circle" >
+          <% end %>
+          <p class= "font-weight-bold"><%= post.title %></p>
+          <p>Posted by <%= post.user.name %></p>
+          <div class= "d-flex justify-content-around">
+            <% if post.favorited_by?(current_user) %>
+              <p>
+                <%= link_to post_favorites_path(post),method: :delete do %>
+                  ♥<%= post.favorites.count %>いいね
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to post_favorites_path(post),method: :post do %>
+                  ♡<%= post.favorites.count %>いいね
+                <% end %>
+              </p>
+            <% end %>
+              <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>

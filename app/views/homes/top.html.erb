@@ -1,20 +1,20 @@
-<div class= "container">
+<div class= "container pt-5 pb-5">
   <div class= "row">
     <div class= "col-lg-7">
-      <img src= "/assets/homepage.jpeg" class= "img-fluid" alt="" >
+      <img src= "/assets/homepage.jpeg" class= "img-fluid shadow" alt= "Picuture">
     </div>
     <div class="col-lg-5">
-      <h1>Learn Language<br>
+      <h1 class= "font-weight-bold">Learn Language<br>
       Through Sharing<br>
       Your Favorite<br>
       Contents</h1>
       <% if user_signed_in? %>
-       <h3>Hello! <%= current_user.name %>さん</h3>
+       <h3 class= "pt-4">Hello! <%= current_user.name %>さん</h3>
       <% else %>
         <%= link_to new_user_registration_path do %>
-          <button type="button" class="btn btn-primary">Join Now!</button>
+          <button type="button" class="btn btn-primary mt-3">Join Now!</button>
         <% end %>
-        <p class="small">If you already have an account, click <%= link_to "here", new_user_session_path %> to login.</p>
+          <p class="small mt-4">If you already have an account, click <%= link_to "here", new_user_session_path %> to login.</p>
       <% end %>
     </div>
   </div>

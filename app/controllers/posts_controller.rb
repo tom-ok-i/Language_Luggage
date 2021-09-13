@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(10)
+    @posts = Post.page(params[:page]).per(10).reverse_order
   end
 
   def show

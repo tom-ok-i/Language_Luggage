@@ -1,32 +1,16 @@
-<h1>All Contents</h1>
-<h2>Genres</h2>
-<p>Movie</p>
-<p>Books</p>
-<p>Games</p>
-<p>Drama</p>
-<p>Music</p>
-
-<% @posts.each do |post| %>
-<div>
- <p>作品名：<%= post.title %></p>
- <%= link_to post_path(post.id) do %>
- 　<%= image_tag post.image %>
- <% end %>
- <p>Posted by <%= post.user.name %></p>
-   <% if post.favorited_by?(current_user) %>
-     <p>
-       <%= link_to post_favorites_path(post),method: :delete do %>
-         ♥<%= post.favorites.count %>いいね
-       <% end %>
-     </p>
-   <% else %>
-     <p>
-       <%= link_to post_favorites_path(post),method: :post do %>
-         ♡<%= post.favorites.count %>いいね
-       <% end %>
-     </p>
-   <% end %>
- <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-12 border-bottom">
+      <h2 class= "pt-4 text-secondary text-center font-weight-bold">All Contents</h2>
+      <h4 class= "text-center">Genres</h4>
+      <div class= "row d-flex justify-content-around">
+        <p>Movie</p>
+        <p>Books</p>
+        <p>Games</p>
+        <p>Drama</p>
+        <p>Music</p>
+      </div>
+    </div>
+    <%= render 'posts/posts', posts: @posts %>
+  </div>
 </div>
-<% end %>
-<%= paginate @posts %>

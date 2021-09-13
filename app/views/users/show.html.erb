@@ -1,36 +1,30 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.image %>
-  <p>自己紹介:<%= @user.introduction %></p>
-</div>
-<div>
-  <% if @user.id == current_user.id %>
-    <%= link_to "Create New Post", new_post_path %><br>
-    <%= link_to "Edit Profile", edit_user_path(@user.id) %>
-  <% end %>
-</div>
-
-<% @posts.each do |post| %>
-  <div>
-    <p><%= post.title %></p>
-    <%= link_to post_path(post.id) do %>
-      <%= image_tag post.image %>
-    <% end %>
-    <p>Posted by <%= post.user.name %></p>
-    <% if post.favorited_by?(current_user) %>
-      <p>
-        <%= link_to post_favorites_path(post),method: :delete do %>
-          ♥<%= post.favorites.count %>いいね
+<div class= "container">
+  <div class= "row border-bottom">
+     <div class= "col-4 mt-4">
+      <% if @user.image.attached? %>
+      <%= image_tag @user.image, size:"300x300", alt: "Profile Image", class: "mx-auto rounded-circle" %>
+      <% else %>
+      <img src= "/assets/no_image_profile.jpg" width="400" height="400" class="mx-auto rounded-circle" >
+      <% end %>
+      </div>
+      <div class= "col-8 mt-4">
+      <h2 class= "font-weight-bold"><%= @user.name %></h2>
+        <% if @user.id == current_user.id %>
+        <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
+        <% else %>
+        <div class= "btn btn-success">フォローする</div>
         <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to post_favorites_path(post),method: :post do %>
-          ♡<%= post.favorites.count %>いいね
+        <p>フォロワー数</p>
+        <p>フォロー数</p>
+        <h6 class= "font-weight-bold pt-4">自己紹介</h6>
+        <p><%= @user.introduction %></p>
+        <p class= "pt-3 font-weight-bold">投稿件数 <%= @user.posts.count %>件</p>
+        <% if @user.id == current_user.id %>
+        <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-5" %><br>
         <% end %>
-      </p>
-    <% end %>
-    <p><%= link_to "#{post.comments.count}コメント",post_path(post.id) %></p>
-  </div>
-<% end %>
-<%= paginate @posts %>
+     </div>
+    </div>
+    <div class= row>
+      <%= render 'posts/posts', posts: @user.posts %>
+    </div>
+</div>
