@@ -18,17 +18,6 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  def following
-    @user = User.find(params[:id])
-    render :show_follow
-  end
-
-  def followers
-    @user = User.find(params[:id])
-    render :show_follower
-  end
-
-
   private
 
   def user_params
