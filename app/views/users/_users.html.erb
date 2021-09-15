@@ -10,9 +10,13 @@
           <h4 class= "font-weight-bold text-center"><%= user.name%></h4>
         <% end %>
         <div class= "d-flex justify-content-around">
-          <p class= "pt-3 font-weight-bold">投稿件数 <%= user.posts.count %>件</p>
-          <p>フォロワー数</p>
-          <p>フォロー数</p>
+          <p class= "mt-2 font-weight-bold">投稿件数 <%= user.posts.count %>件</p>
+          <div class= "mt-2">
+            Follows： <%= link_to user.following.count, following_user_path(user.id) %>
+          </div>
+          <div class= "mt-2">
+            Followers: <%= link_to user.followers.count, followers_user_path(user.id) %>
+          </div>
         </div>
       </div>
       <% end %>
