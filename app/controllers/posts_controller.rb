@@ -6,8 +6,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      render:new
+    end
   end
 
   def index
@@ -21,6 +24,11 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to posts_path
+    end
   end
 
   def update
@@ -40,4 +48,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description, :image, :genre_id)
   end
+
 end
