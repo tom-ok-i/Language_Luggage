@@ -4,11 +4,9 @@
       <h2 class= "pt-4 text-secondary text-center font-weight-bold">All Contents</h2>
       <h4 class= "text-center">Genres</h4>
       <div class= "row d-flex justify-content-around">
-        <p>Movie</p>
-        <p>Books</p>
-        <p>Games</p>
-        <p>Drama</p>
-        <p>Music</p>
+      <% @genres.each do |genre| %>
+        <%= link_to genre.genre_name, posts_path(genre_id: genre.id) %>
+      <% end %>
       </div>
     </div>
     <%= render 'posts/posts', posts: @posts %>
