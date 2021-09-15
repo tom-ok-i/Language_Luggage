@@ -9,10 +9,12 @@
           <% end %>
         <% end %>
         <div class= "card-body">
+          <%= link_to user_path(post.user.id) do %>
           <% if post.user.image.attached? %>
             <%= image_tag post.user.image, size: "60x60", class: "mt-2 rounded-circle" %>
           <% else %>
             <img src= "/assets/no_image_profile.jpg" width="60" height="60" class="mt-2 rounded-circle" >
+          <% end %>
           <% end %>
           <p class= "font-weight-bold"><%= post.title %></p>
           <p>Posted by <%= post.user.name %></p>

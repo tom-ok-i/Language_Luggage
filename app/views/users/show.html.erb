@@ -2,20 +2,28 @@
   <div class= "row border-bottom">
      <div class= "col-4 mt-4">
       <% if @user.image.attached? %>
-      <%= image_tag @user.image, size:"300x300", alt: "Profile Image", class: "mx-auto rounded-circle" %>
+        <%= image_tag @user.image, size:"300x300", alt: "Profile Image", class: "mx-auto rounded-circle" %>
       <% else %>
-      <img src= "/assets/no_image_profile.jpg" width="400" height="400" class="mx-auto rounded-circle" >
+        <img src= "/assets/no_image_profile.jpg" width="400" height="400" class="mx-auto rounded-circle" >
       <% end %>
       </div>
       <div class= "col-8 mt-4">
-      <h2 class= "font-weight-bold"><%= @user.name %></h2>
+        <h2 class= "font-weight-bold"><%= @user.name %></h2>
         <% if @user.id == current_user.id %>
-        <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
+          <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
         <% else %>
-        <div class= "btn btn-success">フォローする</div>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
         <% end %>
-        <p>フォロワー数</p>
-        <p>フォロー数</p>
+        <div class= "mt-4">
+          Follows： <%= link_to @user.followings.count, user_followings_path(@user) %>
+        </div>
+        <div class= "mt-2">
+          Followers: <%= link_to @user.followers.count, user_followers_path(@user) %>
+        </div>
         <h6 class= "font-weight-bold pt-4">自己紹介</h6>
         <p><%= @user.introduction %></p>
         <p class= "pt-3 font-weight-bold">投稿件数 <%= @user.posts.count %>件</p>
