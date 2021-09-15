@@ -1,1 +1,12 @@
-followings
+<div class= "container">
+  <div class= "row">
+    <div class= "col-12 border-bottom">
+      <h2 class= "pt-4 text-secondary text-center font-weight-bold">Follow</h2>
+    </div>
+    <% if @users.exists? %>
+      <%= render 'users/users', users: @users %>
+    <% else %>
+      <h4 class= "mx-auto mt-4">ユーザーはいません</h4>
+    <% end %>
+  </div>
+</div>
