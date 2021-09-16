@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'genres/index'
+  get 'genres/show'
   get 'searches/search'
   devise_for :users
   root to: 'homes#top'

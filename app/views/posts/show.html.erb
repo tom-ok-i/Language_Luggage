@@ -16,7 +16,7 @@
         <% if @post.image.attached? %>
           <%= image_tag @post.image, size: "500x400", class: "shadow" %>
         <% else %>
-          <img src= "/assets/noimage.png" width="500" height="400" >
+          <%= image_tag 'no_image_post.png', size: "500x400" %>
         <% end %>
       </div>
       <div class= "mt-4">
@@ -61,7 +61,7 @@
               <% if comment.user.image.attached? %>
               <%= image_tag comment.user.image, size: "60x60", class: "rounded-circle" %>
               <% else %>
-              <img src= "/assets/no_image_profile.jpg", width= "60", height= "60", class= "rounded-circle">
+              <%= image_tag 'no_image_profile.jpg', size: "60x60", class: "rounded-circle" %>
               <% end %>
             </div>
             <div class= "flex-fill bd-highlight ml-4 mr-1">

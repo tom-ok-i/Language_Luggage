@@ -1,5 +1,4 @@
-class SearchController < ApplicationController
-  before_action :authenticate_user!
+class SearchesController < ApplicationController
 
   def search
     @model = params[:model]
