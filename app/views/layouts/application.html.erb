@@ -4,6 +4,7 @@
     <title>LanguageLuggage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/ff5426bf2c.js" crossorigin="anonymous"></script>
     <meta name= "viewport" content= "width=device-width, initial-scale=1, maximum-scale=1" >
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -33,6 +34,9 @@
                 </li>
                 <li class= "nav-item">
                   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+                </li>
+                <li class= "nav-item">
+                  <%= render 'layouts/search' %>
                 </li>
               <% else %>
                 <li class= "nav-item">
