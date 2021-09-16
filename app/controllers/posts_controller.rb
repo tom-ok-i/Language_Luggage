@@ -15,14 +15,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @genres = Genre.only_active
-    if params[:genre_id]
-      @genre = @genres.find(params[:genre_id])
-      all_posts = @genre.posts
-    else
-      all_posts = Post.where_genre_active.includes(:genre)
-    end
     @posts = Post.page(params[:page]).per(10).reverse_order
+    @genres = Genre.all
   end
 
   def show

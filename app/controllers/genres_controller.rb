@@ -1,8 +1,6 @@
 class GenresController < ApplicationController
 
-  def index
-  end
-
   def show
+    # @genres = genre.post 作成途中
   end
 end
