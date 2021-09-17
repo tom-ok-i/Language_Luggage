@@ -3,7 +3,7 @@
     <h2 class= "p-4 text-secondary font-weight-bold">作品詳細情報</h2>
   </div>
   <div class= "row">
-    <div class= "col-7">
+    <div class= "col-7" id= "post_<%= @post.id %>">
       <div class= "">
         <h6 class= "font-weight-bold">作品名</h6>
         <%= @post.title %>
@@ -28,18 +28,8 @@
           <%= link_to "Edit", edit_post_path(@post), class: "btn btn-success" %>
         <% end %>
       </div>
-      <div class= "mt-4">
-        <% if @post.favorited_by?(current_user) %>
-          <%= link_to post_favorites_path(@post),method: :delete do %>
-            <h3 class= "text-danger">♥</h3>
-          <% end %>
-          <%= @post.favorites.count %>いいね
-        <% else %>
-          <%= link_to post_favorites_path(@post),method: :post do %>
-            <h3 class= "text-muted">♡</h3>
-          <% end %>
-          <%= @post.favorites.count %>いいね
-        <% end %>
+      <div class= "mt-4 favorite-btn">
+        <%= render "favorites/favorite-btn", post: @post %>
       </div>
       <div class= "mt-3">
         <%= form_with(model:[@post,@comment],loacal: true) do |f| %>

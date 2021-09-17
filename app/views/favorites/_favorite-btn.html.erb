@@ -1,0 +1,11 @@
+<% if post.favorited_by?(current_user) %>
+  <%= link_to post_favorites_path(post), remote: true, method: :delete do %>
+    <h3 class= "text-danger">♥</h3>
+  <% end %>
+  <%= post.favorites.count %>いいね
+<% else %>
+  <%= link_to post_favorites_path(post), remote: true, method: :post do %>
+    <h3 class= "text-muted">♡</h3>
+  <% end %>
+  <%= post.favorites.count %>いいね
+<% end %>

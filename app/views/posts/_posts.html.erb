@@ -1,6 +1,6 @@
     <div class= "col-12 d-flex flex-wrap">
       <% posts.each do |post| %>
-      <div class= "card mx-auto col-5 pt-4 mt-4 mb-4 shadow">
+      <div class= "card mx-auto col-5 pt-4 mt-4 mb-4 shadow" id= "post_<%= post.id %>">
         <%= link_to post_path(post.id) do %>
           <% if post.image.attached? %>
             <%= image_tag post.image, size: "100x300", alt: "Contents Image", class: "card-img-top" %>
@@ -19,19 +19,7 @@
           <p class= "font-weight-bold"><%= post.title %></p>
           <p>Posted by <%= post.user.name %></p>
           <div class= "d-flex justify-content-around">
-            <% if post.favorited_by?(current_user) %>
-              <p>
-                <%= link_to post_favorites_path(post),method: :delete do %>
-                  ♥<%= post.favorites.count %>いいね
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to post_favorites_path(post),method: :post do %>
-                  ♡<%= post.favorites.count %>いいね
-                <% end %>
-              </p>
-            <% end %>
+              <div class= "favorite-btn"><%= render "favorites/favorite-btn", post: post %></div>
               <p><%= link_to "#{post.comments.count}コメント", post_path(post.id) %></p>
           </div>
         </div>
