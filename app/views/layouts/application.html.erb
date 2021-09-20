@@ -4,6 +4,7 @@
     <title>LanguageLuggage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/ff5426bf2c.js" crossorigin="anonymous"></script>
     <meta name= "viewport" content= "width=device-width, initial-scale=1, maximum-scale=1" >
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -34,6 +35,9 @@
                 <li class= "nav-item">
                   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
                 </li>
+                <li class= "nav-item">
+                  <%= render 'layouts/search' %>
+                </li>
               <% else %>
                 <li class= "nav-item">
                   <%= link_to "Home", homes_top_path, class: 'nav-link text-dark' %>
@@ -58,21 +62,17 @@
       <%= yield %>
     </main>
 
-    <footer class= "bg-dark text-white">
+    <footer class= "bg-dark text-white pt-3">
       <div class= "container">
         <div class= "row">
           <div class= "col-md-4">
             <p>Let's share your favorite stories.</p>
           </div>
           <div class= "col-md-4">
-            <h6 class= "text-white mt-2 mb-3">Language Luggage</h6>
+            <h6 class= "text-white">Language Luggage</h6>
           </div>
           <div class= "col-md-4">
-            <ul class= "p-0 list-unstyled">
-              <li>
-                <p class = "text-white-50">Produced by<br>Tomo.T</p>
-              </li>
-            </ul>
+            <p class = "text-white-50">Produced by<br>Tomo.T</p>
           </div>
         </div>
       </div>

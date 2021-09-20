@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.page(params[:page]).per(10).reverse_order
   end
@@ -21,6 +22,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
+  end
+
+  def favorites
+    @favorited_posts = Post.where(id: Favorite.where(user_id: current_user.id).pluck('post_id'))
   end
 
   private

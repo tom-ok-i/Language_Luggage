@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(10).reverse_order
+    @genres = Genre.all
   end
 
   def show
