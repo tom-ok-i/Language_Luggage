@@ -24,6 +24,10 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  def favorites
+    @favorited_posts = Post.where(id: Favorite.where(user_id: current_user.id).pluck('post_id'))
+  end
+
   private
 
   def user_params

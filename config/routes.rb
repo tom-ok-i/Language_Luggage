@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'genres/show', as: 'genre'
+  get 'users/:id/favorites' => 'users#favorites'
+  get 'genres/show/:genre_id', to: 'genres#show', as: 'genre'
   get 'searches/search'
   devise_for :users
   root to: 'homes#top'
