@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   #自分がフォローしている人(上記relationshipsを通じて参照)
   has_many :followings, through: :relationships, source: :followed
+  has_many :user_rooms
+  has_many :chats
 
   has_one_attached :image
 
