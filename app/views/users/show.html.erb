@@ -16,18 +16,19 @@
             <%= render "relationships/follow-btn", user: @user %>
           </div>
         <% end %>
-        <div class= "mt-4">
-          Follows： <%= link_to @user.followings.count, user_followings_path(@user) %>
-        </div>
-        <div class= "mt-2">
-          Followers: <%= link_to @user.followers.count, user_followers_path(@user) %>
-        </div>
+          <div class= "follows-count">
+            <%= render "relationships/count", user: @user %>
+          </div>
         <h6 class= "font-weight-bold pt-4">自己紹介</h6>
         <p><%= @user.introduction %></p>
         <p class= "pt-3 font-weight-bold">投稿件数 <%= @user.posts.count %>件</p>
         <% if @user.id == current_user.id %>
-        <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-2" %><br>
-        <%= link_to "Your Favorite Contents", "/users/#{@user.id}/favorites", class: "btn btn-info mb-2" %>
+          <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-2" %><br>
+          <%= link_to "Your Favorite Contents", "/users/#{@user.id}/favorites", class: "btn btn-info mb-2" %>
+        <% else %>
+        <div class= "chat-btn">
+          <%= render 'chats/chat-btn', user: @user %>
+        </div>
         <% end %>
      </div>
     </div>

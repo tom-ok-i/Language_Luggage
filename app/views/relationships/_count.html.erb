@@ -1,0 +1,6 @@
+<div class= "mt-4">
+  Follows： <%= link_to user.followings.count, user_followings_path(user) %>
+</div>
+<div class= "mt-2">
+  Followers: <%= link_to user.followers.count, user_followers_path(user) %>
+</div>
