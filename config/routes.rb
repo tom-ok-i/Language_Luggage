@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'chats/:id' => 'chats#show', as: 'chat'
-  resources :chat, only: [:create]
+  resources :chats, only: [:show, :create]
   get 'users/:id/favorites' => 'users#favorites'
   get 'genres/show/:genre_id', to: 'genres#show', as: 'genre'
   get 'searches/search'
