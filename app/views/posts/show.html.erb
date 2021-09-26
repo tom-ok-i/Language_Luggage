@@ -42,7 +42,7 @@
       <div class= "pt-3 comments-count">
         <%= render 'comments/count', post: @post %>
       </div>
-      <div class= "overflow-auto comments">
+      <div class= "overflow-auto comments" id= "comments_area">
         <%= render 'comments/comments', post: @post %>
       </div>
     </div>

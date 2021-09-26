@@ -19,12 +19,14 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+
+$(document).on('turbolinks:load', function() {
+  // 処理内容
   $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")
     transition : 'slide',
     // 変化に係る時間(ミリ秒)
-    speed : 500,
+    speed : 100,
     // easingの種類
     easing : 'easeOutQuart',
     // ナビゲーションの形("block" or "bubble")

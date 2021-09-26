@@ -1,0 +1,21 @@
+<% chats.each do |chat| %>
+  <% if chat.user_id == current_user.id %>
+    <div class= "d-flex justify-content-end mt-2 mr-3 mb-2">
+      <%= chat.message %>
+      <% if current_user.image.attached? %>
+        <%= image_tag current_user.image, size: "30x30", class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag 'no_image_profile.jpg', size: "30x30", class: "rounded-circle" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class= "d-flex justify-content-start mt-2 ml-3 mb-2">
+      <% if user.image.attached? %>
+        <%= image_tag user.image, size: "30x30", class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag 'no_image_profile.jpg', size: "30x30", class: "rounded-circle" %>
+      <% end %>
+      <%= chat.message %>
+    </div>
+  <% end %>
+<% end %>
