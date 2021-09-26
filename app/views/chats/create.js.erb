@@ -1,0 +1,5 @@
+$(".message").html("<%= j(render 'chats/chats', user: @user, chats: @chats) %>");
+$("input[type=text]").val("");
+
+var obj = document.getElementById("chats_area");
+obj.scrollTop = obj.scrollHeight;

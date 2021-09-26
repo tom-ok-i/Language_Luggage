@@ -18,9 +18,10 @@ class ChatsController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @chats = Chat.all
     @chat = current_user.chats.new(chat_params)
     @chat.save
-    redirect_to request.referer
   end
 
   private
@@ -34,4 +35,5 @@ class ChatsController < ApplicationController
       redirect_to contents_path
     end
   end
+
 end
