@@ -3,13 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .image1 {
-  background-image: url(homepage1.jpg);
+  background-image: image-url(homepage1.jpg);
 }
 .image2 {
-  background-image: url(homepage2.jpg);
+  background-image: image-url(homepage2.jpg);
 }
 .image3 {
-  background-image: url(homepage3.jpg);
+  background-image: image-url(homepage3.jpg);
 }
 
 #container{
