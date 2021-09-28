@@ -1,5 +1,7 @@
 class ChatsController < ApplicationController
 
+  before_action :following_each_other, only: [:show]
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)

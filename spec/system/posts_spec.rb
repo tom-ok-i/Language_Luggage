@@ -11,9 +11,10 @@ describe '投稿のテスト' do
     context'表示の確認'do
       it 'トップ画面(homes_top_path)にLearn Languageが表示されているか' do
         expect(page).to have_content'Learn Language'
-      end 
+      end
       it 'homes_top_pathが"homes/top"であるか' do
         expect(current_path).to eq('homes/top')
       end
     end
   end
+end
