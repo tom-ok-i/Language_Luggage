@@ -1,24 +1,24 @@
-          <% post.comments.each do |comment| %>
-          <div class= "border-bottom mt-2">
-            <div class= "d-flex bd-highlight">
-            <div>
-              <% if comment.user.image.attached? %>
-              <%= image_tag comment.user.image, size: "60x60", class: "rounded-circle" %>
-              <% else %>
-              <%= image_tag 'no_image_profile.jpg', size: "60x60", class: "rounded-circle" %>
-              <% end %>
-            </div>
-            <div class= "flex-fill bd-highlight ml-4 mr-1">
-              <%= comment.comment %>
-            </div>
-            <div>
-              <% if comment.user == current_user %>
-                <%= link_to "Delete",post_comment_path(comment.post,comment), method: :delete, remote: true,  class: "btn btn-danger" %>
-              <% end %>
-            </div>
-            </div>
-            <div>
-              <p class= "text-right">Commented by <%= link_to comment.user.name, user_path(post.user) %></p>
-            </div>
-          </div>
-         <% end %>
+<% post.comments.each do |comment| %>
+  <div class= "border-bottom mt-2">
+    <div class= "d-flex bd-highlight">
+      <div>
+        <% if comment.user.image.attached? %>
+          <%= image_tag comment.user.image, size: "60x60", class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag 'no_image_profile.jpg', size: "60x60", class: "rounded-circle" %>
+        <% end %>
+      </div>
+      <div class= "flex-fill bd-highlight ml-4 mr-1">
+        <%= comment.comment %>
+      </div>
+      <div>
+        <% if comment.user == current_user %>
+          <%= link_to "Delete",post_comment_path(comment.post,comment), method: :delete, remote: true,  class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <p class= "text-right">Commented by <%= link_to comment.user.name, user_path(post.user) %></p>
+    </div>
+  </div>
+<% end %>

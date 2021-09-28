@@ -15,7 +15,7 @@
     <header class= "shadow-sm">
       <nav class= "navbar navbar-expand-lg navbar-light">
         <div class= "container">
-            <img src= "/assets/logo.jpeg" class= "img-fluid" width= "50" alt="LOGO">
+            <%= image_tag 'logo.jpg', class: "img-fluid", size: "50x50", alt: "LOGO" %>
           <h2 class= "text-black font-weight-bold">Language Luggage</h2>
           <button class= "navbar-toggler" type= "button" data-toggle= "collapse" data-target= "#navbarNavDropdown" aria-controls= "navbarNavDropdown" aria-expanded= "false" aria-label= "Toggle navigation">
             <span class= "navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@
       </nav>
     </header>
 
-    <main class= "mb-auto">
+    <main class= "bg-light">
       <%= yield %>
     </main>
 

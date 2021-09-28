@@ -7,9 +7,9 @@
       </div>
       <div class= "mt-3 mx-auto">
       <%= form_with model: @chat, data: {remote: true} do |f| %>
-        <%= f.text_field :message, autofocus: true, placeholder: "メッセージ..." %>
+        <%= f.text_field :message, autofocus: true, placeholder: "メッセージ...", size: "60" %>
         <%= f.hidden_field :room_id %>
-        <%= f.submit 'メッセージを送信' %>
+        <%= f.submit 'メッセージを送信'%>
       <% end %>
       </div>
     </div>
