@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  # before_action :ensure_correct_user, only: [:edit, :update]は利用せずedit内でバリデーションを記述
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
     @users = User.page(params[:page]).per(10).reverse_order
@@ -12,16 +12,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    if @user == current_user
-      render "edit"
-    else
-      redirect_to users_path
-    end
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
@@ -34,6 +27,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :image, :introduction)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to users_path
+    end
   end
 
 end
