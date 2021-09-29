@@ -26,14 +26,18 @@
         <h4>ジャンル</h4>
         <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
       </div>
-      <div class= "field pt-4">
+      <div class= "field pt-4 mb-2">
         <h4>サムネイル</h4>
-        <%= f.file_field :image %>
+        <%= f.file_field :image, class: "push", onchange: "loadImage(this)" %>
+      </div>
+      <div id= "post_images" style="display:none;" >
+        <p id= "preview" style= "height:60ps;" ></p>
       </div>
       <div class= "actions pt-4">
         <%= f.submit '変更を適用', class: "btn btn-success" %>
       </div>
       <% end %>
+      <%= render "loadimage" %>
       <div class= "actions pt-4 pb-4">
         <% if @post.user == current_user %>
           <%= link_to "投稿を削除", post_path(@post), method: :delete, class: "btn btn-danger" %>

@@ -30,8 +30,8 @@
         <h4>サムネイル</h4>
         <%= f.file_field :image, class: "push", onchange: "loadImage(this);" %>
       </div>
-      <div id="post_images" style="display: none;">
-        <p id="preview" style= "height:60px;"></p>
+      <div id= "post_images" style= "display: none;">
+        <p id= "preview" style= "height:60px;"></p>
       </div>
       <div class= "actions pt-4 pb-4">
         <%= f.submit '投稿', class: "btn btn-success" %>
