@@ -57,8 +57,6 @@ class User < ApplicationRecord
         image.purge # Rails6では、この1行は必要ない
         errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
       end
-    else
-      errors.add(:image, 'を選択して下さい')
     end
   end
 
