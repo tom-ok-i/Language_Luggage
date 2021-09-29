@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  # before_action :ensure_correct_user, only: [:edit, :update]は利用せずedit内でバリデーションを記述
 
   def index
     @users = User.page(params[:page]).per(10).reverse_order
