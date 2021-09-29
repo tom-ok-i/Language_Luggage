@@ -1,3 +1,4 @@
+<!--相互フォローの関係であればボタン表示-->
 <% if current_user.following?(@user) && @user.following?(current_user) %>
   <%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-success mb-2" %>
 <% end %>

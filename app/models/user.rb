@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :name, uniqueness: true, length: {minimum: 2, maximum: 20}
+  validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 20}
   validates :introduction, length: {maximum: 50}
 
   devise :database_authenticatable, :registerable,
@@ -47,15 +47,16 @@ class User < ApplicationRecord
   end
 
   has_one_attached :image
-
   validate :image_type
 
   private
 
   def image_type
-    if !image.blob.content_type.in?(%('image/jpeg image/png'))
-      image.purge # Rails6では、この1行は必要ない
-      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+    if image.attached?
+      if !image.blob.content_type.in?(%('image/jpeg image/png'))
+        image.purge # Rails6では、この1行は必要ない
+        errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+      end
     end
   end
 

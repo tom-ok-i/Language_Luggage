@@ -4,6 +4,15 @@
   </div>
   <div class= "row">
     <div class= "col-lg-8">
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_with model:@user,local:true do |f| %>
         <div class="field">
           <h4>名前</h4>
@@ -13,14 +22,18 @@
           <h4>自己紹介</h4>
           <%= f.text_area :introduction, size: "60x10", placeholder: "あなたの英語力や語学学習歴を紹介しましょう。" %>
         </div>
-        <div class= "field pt-4">
+        <div class= "field pt-4 mb-2">
           <h4>プロフィール画像</h4>
-          <%= f.file_field :image %>
+          <%= f.file_field :image, class: "push", onchange: "loadImage(this);" %>
+        </div>
+        <div id= "user_images" style= "display: none;">
+          <p id= "preview" style= "height:60px;"></p>
         </div>
         <div class= "actions pt-4 pb-4">
           <%= f.submit "Save Profile", class: "btn btn-success" %>
         </div>
       <% end %>
+      <%= render "loadimage" %>
     </div>
   </div>
 </div>
