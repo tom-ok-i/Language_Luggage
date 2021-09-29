@@ -22,8 +22,6 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :chats
 
-  has_one_attached :image
-
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -47,5 +45,19 @@ class User < ApplicationRecord
       User.where('name LIKE ?', '%' + content + '%')
     end
   end
+
+  has_one_attached :image
+
+  validate :image_type
+
+  private
+
+  def image_type
+    if !image.blob.content_type.in?(%('image/jpeg image/png'))
+      image.purge # Rails6では、この1行は必要ない
+      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+    end
+  end
+
 
 end

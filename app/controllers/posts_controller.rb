@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+
   before_action :authenticate_user!
+  # before_action :ensure_correct_user, only: [:edit, :update, :destroy]は利用せずedit内でバリデーションを記述
 
   def new
     @post = Post.new

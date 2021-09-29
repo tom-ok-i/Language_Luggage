@@ -1,5 +1,2 @@
 $(".comments-count").html("<%= j(render 'comments/count', post: @post) %>");
 $(".comments").html("<%= j(render 'comments/comments', post: @post) %>");
-
-var obj = document.getElementById("comments_area");
-obj.scrollTop = obj.scrollHeight;

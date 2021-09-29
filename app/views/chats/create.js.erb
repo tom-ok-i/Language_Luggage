@@ -1,5 +1,6 @@
 $(".message").html("<%= j(render 'chats/chats', user: @user, chats: @chats) %>");
 $("input[type=text]").val("");
 
+<!--メッセージ送信時に最新のメッセージを表示-->
 var obj = document.getElementById("chats_area");
 obj.scrollTop = obj.scrollHeight;

@@ -31,6 +31,7 @@ class ChatsController < ApplicationController
     params.require(:chat).permit(:message, :room_id)
   end
 
+# バリデーションのために記載
   def following_each_other
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
