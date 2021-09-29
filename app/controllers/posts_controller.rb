@@ -31,8 +31,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    redirect_to user_path(current_user)
+    if@post.update(post_params)
+      redirect_to user_path(current_user)
+    else
+      render:edit
+    end
   end
 
   def destroy
