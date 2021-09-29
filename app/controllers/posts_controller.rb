@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!
-  # before_action :ensure_correct_user, only: [:edit, :update, :destroy]は利用せずedit内でバリデーションを記述
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -28,22 +28,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    if @post.user == current_user
-      render "edit"
-    else
-      redirect_to posts_path
-    end
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
+    @post.update(post_params)
     redirect_to user_path(current_user)
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user)
   end
@@ -52,6 +44,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :image, :genre_id)
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
   end
 
 end
