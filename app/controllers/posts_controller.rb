@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "新規投稿が完了しました"
     else
       render:new
     end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     if@post.update(post_params)
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "投稿情報の編集が完了しました"
     else
       render:edit
     end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "投稿の削除が完了しました"
   end
 
   private
