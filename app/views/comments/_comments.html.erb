@@ -19,6 +19,7 @@
     </div>
     <div>
       <p class= "text-right">Commented by <%= link_to comment.user.name, user_path(post.user) %></p>
+      <p class= "text-right sentiment-score">コメントの感情分析スコア<%= comment.score %></p>
     </div>
   </div>
 <% end %>
