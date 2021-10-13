@@ -25,6 +25,7 @@
       <% if @user.id == current_user.id %>
         <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-2" %><br>
         <%= link_to "Your Favorite Contents", "/users/#{@user.id}/favorites", class: "btn btn-info mb-2" %>
+        <%= link_to "新着情報", notifications_path %>
       <% else %>
       <div class= "chat-btn">
         <%= render 'chats/chat-btn', user: @user %>
