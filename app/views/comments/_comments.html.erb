@@ -19,10 +19,10 @@
     </div>
     <div>
       <p class= "text-right">Commented by <%= link_to comment.user.name, user_path(post.user) %></p>
-      <p class= "text-right sentiment-score">コメントのムード
-        <% if comment.score.to_i >= 0.0 %>
+      <p class= "text-right sentiment-score">mood
+        <% if comment.score.to_f >= -0.6 %>
           <i class="far fa-smile-beam"></i>
-        <% elsif comment.score.to_i < 0.0 %>
+        <% elsif comment.score.to_f < -0.6 %>
           <i class="far fa-frown"></i>
         <% end %></p>
     </div>
