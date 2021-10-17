@@ -46,7 +46,7 @@ class Post < ApplicationRecord
     # コメントしている人全員のid取得及び通知送信
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
-      save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+      save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
     # コメントなければ投稿者へ通知
     save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
