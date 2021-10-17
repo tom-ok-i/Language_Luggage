@@ -21,9 +21,9 @@
       <p class= "text-right">Commented by <%= link_to comment.user.name, user_path(post.user) %></p>
       <p class= "text-right sentiment-score">mood
         <% if comment.score.to_f >= -0.6 %>
-          <i class="far fa-smile-beam"></i>
+          <i class="far fa-smile-beam smile"></i>
         <% elsif comment.score.to_f < -0.6 %>
-          <i class="far fa-frown"></i>
+          <i class="far fa-frown frown"></i>
         <% end %></p>
     </div>
   </div>
