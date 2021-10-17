@@ -1,8 +1,8 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 <div class= "col-md-6 mx-auto mt-3">
-  <div class= "form-inline">
-    <span>
+  <div class= "border-bottom">
+    <div>
       <%= link_to user_path(visitor) do %>
         <%= visitor.name %> さん
       <% end %>が
@@ -13,19 +13,19 @@
         <%= link_to 'あなたの投稿', notification.post %>
         <%= "にいいねしました" %>
       <% when 'comment' then %>
-        <% if notification.post_id == visited.id %>
+        <% if notification.post.user_id == visited.id %>
           <%= link_to "あなたの投稿", notification.post %>
         <% else %>
           <%= link_to post_path(notification.post) do %>
             <%= notification.post.user.name + 'さんの投稿'%>
           <% end %>
+        <% end %>
         <%= "にコメントしました" %>
-        <p class= "text-mited mb-0">
+        <p class= "text-muted">
           <%= Comment.find_by(id: notification.comment_id)&.comment %>
         </p>
-        <% end %>
       <% end %>
-    </span>
+    </div>
     <div class= "small text-muted text-right mt-3">
       <%= time_ago_in_words(notification.created_at).upcase %>
     </div>

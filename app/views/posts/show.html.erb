@@ -24,6 +24,10 @@
         <%= @post.description %>
       </div>
       <div class= "mt-4">
+        <h6 class= "font-weight-bold">投稿者</h6>
+        <%= link_to @post.user.name, user_path(@post.user) %>
+      </div>
+      <div class= "mt-4">
         <% if @post.user == current_user %>
           <%= link_to "Edit", edit_post_path(@post), class: "btn btn-success" %>
         <% end %>
