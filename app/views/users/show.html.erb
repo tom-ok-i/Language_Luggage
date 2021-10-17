@@ -10,7 +10,11 @@
     <div class= "col-8 mt-4">
       <h2 class= "font-weight-bold"><%= @user.name %></h2>
         <% if @user.id == current_user.id %>
-          <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
+          <%= link_to "プロフィールを編集", edit_user_path(@user.id), class:"btn btn-secondary mb-2" %><br>
+          <%= link_to "お知らせ", notifications_path, class:"btn btn-danger" %>
+          <% if unchecked_notifications.any? %>
+            <i class="fas fa-circle n-circle"></i>
+          <% end %>
         <% else %>
           <div class= "follow-btn">
             <%= render "relationships/follow-btn", user: @user %>
@@ -24,7 +28,7 @@
       <p class= "pt-3 font-weight-bold">投稿件数 <%= @user.posts.count %>件</p>
       <% if @user.id == current_user.id %>
         <%= link_to "Create New Post", new_post_path, class: "btn btn-success mb-2" %><br>
-        <%= link_to "Your Favorite Contents", "/users/#{@user.id}/favorites", class: "btn btn-info mb-2" %>
+        <%= link_to "Your Favorite Contents", "/users/#{@user.id}/favorites", class: "btn btn-info mb-2" %><br>
       <% else %>
       <div class= "chat-btn">
         <%= render 'chats/chat-btn', user: @user %>
