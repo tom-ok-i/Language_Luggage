@@ -4,9 +4,9 @@
     <%= link_to user_path(user.id) do %>
       <div class= "pl-3">
         <% if user.image.attached? %>
-          <%= image_tag user.image, width: "400", class: "rounded-circle", alt: "Profile Image"%>
+          <%= image_tag user.image, size: "400x400", class: "rounded-circle", alt: "Profile Image"%>
         <% else %>
-          <%= image_tag 'no_image_profile.jpg', width: "400", class: "mx-auto rounded-circle"%>
+          <%= image_tag 'no_image_profile.jpg', size: "400x400", class: "mx-auto rounded-circle"%>
         <% end %>
       </div>
       <h4 class= "font-weight-bold text-center"><%= user.name%></h4>
