@@ -1,7 +1,7 @@
 <div class= "container">
   <div class= "row">
     <div class= "col-12 border-bottom">
-      <h2 class= "pt-4 text-secondary text-center font-weight-bold"><%= current_user%>さんのFollow</h2>
+      <h2 class= "pt-4 text-secondary text-center font-weight-bold"><%= current_user.name %>さんがフォローしているユーザー一覧</h2>
     </div>
     <% if @users.exists? %>
       <%= render 'users/users', users: @users %>
