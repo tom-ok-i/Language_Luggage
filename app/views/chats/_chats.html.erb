@@ -11,7 +11,7 @@
   <% else %>
     <div class= "d-flex justify-content-start mt-2 ml-3 mb-2">
       <% if user.image.attached? %>
-        <%= image_tag user.image, size: "30x30", class: "rounded-circle" %>
+        <%= image_tag chat.user.image, size: "30x30", class: "rounded-circle" %>
       <% else %>
         <%= image_tag 'no_image_profile.jpg', size: "30x30", class: "rounded-circle" %>
       <% end %>

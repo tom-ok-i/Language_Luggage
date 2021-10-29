@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: 作品名
+        description: 説明説明
+        genre: 作品ジャンル

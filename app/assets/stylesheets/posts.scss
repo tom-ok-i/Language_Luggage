@@ -20,6 +20,9 @@
 }
 .card-img-top img{
  transition:1s all;
+ height: 300px;
+ width: 450px;
+ object-fit: cover;
 }
 .card-img-top img:hover{
   transform:scale(1.2,1.2);
