@@ -1,0 +1,25 @@
+<div class= "col-12 d-flex flex-wrap">
+  <% users.each do |user| %>
+  <div class= "card mx-auto col-5 pt-3 pb-3 mt-4 mb-4 shadow">
+    <%= link_to user_path(user.id) do %>
+      <div class= "pl-3">
+        <% if user.image.attached? %>
+          <%= image_tag user.image, width: "400", class: "rounded-circle", alt: "Profile Image"%>
+        <% else %>
+          <%= image_tag 'no_image_profile.jpg', width: "400", class: "mx-auto rounded-circle"%>
+        <% end %>
+      </div>
+      <h4 class= "font-weight-bold text-center"><%= user.name%></h4>
+    <% end %>
+    <div class= "d-flex justify-content-around">
+      <p class= "mt-2 font-weight-bold">投稿件数 <%= user.posts.count %>件</p>
+      <div class= "mt-2">
+        Follows： <%= link_to user.followings.count, user_followings_path(user.id) %>
+      </div>
+      <div class= "mt-2">
+        Followers: <%= link_to user.followers.count, user_followers_path(user.id) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-12 border-bottom">
+      <h2 class= "pt-4 text-secondary text-center font-weight-bold">All Contents(<%= @genre.genre_name %>)</h2>
+      <h4 class= "text-center">Genres</h4>
+      <div class= "row d-flex justify-content-around mb-4">
+        <%= render 'genres/index', genres: @genres %>
+      </div>
+    </div>
+    <%= render 'posts/posts', posts: @posts %>
+  </div>
+</div>

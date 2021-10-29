@@ -1,0 +1,27 @@
+<div class= "container pt-5 pb-5">
+  <div class= "row">
+    <div class= "col-lg-7">
+      <div id="container">
+        <div id="theTarget">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <h1 class= "font-weight-bold">Learn Language<br>
+      Through Sharing<br>
+      Your Favorite<br>
+      Contents</h1>
+      <% if user_signed_in? %>
+       <h3 class= "pt-4">Hello! <%= current_user.name %>さん</h3>
+      <% else %>
+        <%= link_to new_user_registration_path do %>
+          <button type="button" class="btn btn-primary mt-3">Join Now!</button>
+        <% end %>
+          <p class="small mt-4">If you already have an account, click <%= link_to "here", new_user_session_path %> to login.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
