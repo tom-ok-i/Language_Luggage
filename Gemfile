@@ -71,8 +71,7 @@ gem 'pry-byebug'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'rails-i18n'
+gem 'devise-i18n'
 group :production do
   gem 'mysql2'
 end
-
-
