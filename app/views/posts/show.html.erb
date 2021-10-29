@@ -14,7 +14,7 @@
       </div>
       <div class= "mt-4">
         <% if @post.image.attached? %>
-          <%= image_tag @post.image, size: "500x400", class: "shadow" %>
+          <%= image_tag @post.image, width: "450", class: "shadow" %>
         <% else %>
           <%= image_tag 'no_image_post.png', size: "500x400" %>
         <% end %>
